@@ -1,3 +1,5 @@
+
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -8,7 +10,30 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
 }
+body {
+  font-family: 'EB Garamond';font-size:
+  font-size: 1.28rem; 
+  font-weight: 400;
+  line-height: 1.85;
+  margin: 0; 
+  min-height: 100vh;
 
+  background: linear-gradient(
+        to bottom,
+        #2A50BB,
+        #325EC2,
+        #3F6FC9,
+        #487ED2,
+        #3E7AD3,
+        #4182D6,
+        #4A95D8
+
+    );
+
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 @font-face {
     font-family: 'Playfair Display';
     src: url('https://fonts.gstatic.com/s/playfairdisplay/v37/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKeiunDXbtM.woff2') format('woff2');
@@ -20,21 +45,94 @@ html {
 @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap');
 
 
-body {
-  font-family: 'EB Garamond';font-size:
-  font-size: 18pt;
-  line-height: 1.8;
-  color: white;
-  margin: 0; 
+/* Typography */
 
-  background: linear-gradient(
-        to bottom,
-        #4E8EEA,
-        #76A8F5,
-        #A6C8FF
-    );
+.hero {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 80px;
+  margin-bottom: 80px;
+  position: relative;
+}
 
-    overflow-x: hidden;
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(5rem, 8.5vw, 8rem);
+  font-weight: 900;
+  color: #ffffff;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 0.95;
+  letter-spacing: -2px;
+  margin: 0;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 3.8vw, 3.5rem);
+  color: #ffffff;
+  font-weight: 400;
+  font-style: bold;
+  margin-top: 0.2em;
+  margin-bottom: 1em;
+}
+h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: #ffffff;
+  text-align: center;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  margin: 3rem 0;
+}
+
+.hero-swan {
+  position: absolute;
+  /* Increased from 55% to 75% to push the swan lower down the header */
+  top: 75%; 
+  transform: translateY(-50%);
+  
+  right: 5vw;
+  width: clamp(280px, 26vw, 460px);
+  height: auto;
+  
+  pointer-events: none;
+  z-index: 1;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.2));
+}
+
+
+h6 {
+  margin-bottom: 0.8em;
+  margin-top: 1.2em;
+  font-weight: normal;
+  line-height: 1.3;
+  color: #ffffff;
+  text-align: center;
+
+}
+
+
+p {
+  font-family: 'EB Garamond', 'Source Serif 4', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.85;
+  color: #fcfcfc;          
+  margin-top: 0;
+  margin-bottom: 1.6em;   
+  text-indent: 1.8em;      
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.subtitle {
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 2em;
+  text-indent: 0;
 }
 
 main{
@@ -43,110 +141,293 @@ main{
     margin: 0 auto;
     position: relative;
 }
+/* ==========================================================================
+   STEP 2 (REPLACED): BESPOKE EDITORIAL BLOCK COORDINATES
+   ========================================================================== */
 
-/* Typography */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-bottom: 0.8em;
-  margin-top: 1.2em;
-  font-weight: normal;
-  line-height: 1.3;
-  color: #1a1a1a;
+/* The Canvas Spine */
+main,
+.story-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 3vw 8rem;
+  position: relative;
+}
+
+/* Base Block Reset (Strips away generic positioning rules) */
+.story-block {
+  margin-bottom: 50px;
+  position: relative;
+  /* Removes automatic horizontal centering or floating */
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* --- BLOCK 1: WIDE OPENING PROLOGUE --- 
+   Spans wide across the page to establish the reading spine */
+.prologue-intro {
+  width: 100%;
+  max-width: 1080px;
+  margin-left: 12%;
+  margin-top: 40px;
+  margin-bottom: 4rem;
+  text-align: left;
+}
+
+/* Creates the signature storybook Drop Cap 'F' from the mockup */
+.prologue-intro p:first-of-type::first-letter {
+  font-family: 'Playfair Display', serif;
+  font-size: 4.2rem;
+  float: left;
+  line-height: 0.8;
+  margin-right: 12px;
+  margin-bottom: -4px;
+  color: #ffffff;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* --- BLOCK 2: NARROW CROWN COLUMN --- 
+   Restricts the measure to 52% so words never collide with the Golden Crown */
+.royal-childhood {
+  width: 52%;
+  max-width: 680px;
+  margin-left: 12%;
+  margin-bottom: 14px;
+  text-align: left;
+}
+.story-block.royal-childhood {
+  width: 52%;
+  max-width: 650px;
+  margin-left: 12%;      /* Aligns the left edge with the prologue above it */
+  margin-right: auto;    /* Overrides any auto-margins from block-shift-center */
+  margin-bottom: 160px;
+  text-align: left;      /* Overrides centered text alignment */
+}
+
+/* 2. Keeps paragraphs clean, straight, and unindented */
+.royal-childhood p {
+  text-align: left;
+  text-indent: 0;
+  margin-bottom: 1.6em;
+}
+
+/* 3. Positions the Golden Crown in the empty right-hand gutter */
+.royal-childhood .crown {
+  position: absolute;
+  
+  /* Pushes the image outside the right edge of the 52% text column */
+  left: 108%;
+  
+  /* Drops the crown down so it sits alongside Paragraph 2 ("The next week...") */
+  top: 18%;
+  
+  /* Matches the grand, prominent scale seen in the mockup */
+  width: clamp(180px, 20vw, 260px);
+  height: auto;
+  
+  transform: rotate(4deg);
+  pointer-events: none;
+  z-index: 2;
+  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.22));
+}
+
+/* Strips indentation so both columns maintain a crisp, flush left alignment */
+.prologue-intro p,
+.royal-childhood p {
+  text-indent: 0;
+  margin-bottom: 1.6em;
+}
+
+
+/* --- BLOCK 3: SWANS FLIGHT --- 
+   Shifts dramatically to the RIGHT side of the canvas (30% indent from the left) */
+.swans-flight {
+  width: 64%;
+  margin-left: 32%;
+  text-align: left;
+}
+
+/* --- BLOCK 4: COTTAGE YEARS --- 
+   Centered on the page, tighter measure to emphasize the bolded climax text */
+.cottage-years {
+  width: 72%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+/* --- BLOCK 5: TOAD BATH --- 
+   Left-leaning, indented 8% from the edge to create space for the top-right snake */
+.toad-bath {
+  width: 68%;
+  margin-left: 8%;
+  text-align: left;
+}
+.story-block.toad-bath {
+  width: 60%;
+  max-width: 750px;
+  margin-left: 15%;      /* Keeps clean left alignment */
+  margin-right: auto;
+  margin-bottom: 160px;
+  position: relative;
+}
+
+
+.toad-bath .emphasis-text {
+  font-size: 1.3rem;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+  color: #ffffff;
+}
+.toad-bath p {
+  text-align: left;
+  text-indent: 0;
+  margin-bottom: 1.6em;
+}
+.toad-bath p:nth-of-type(1)::first-letter {
+  font-family: 'Playfair Display', serif;
+  font-size: 4.2rem;
+  float: left;
+  line-height: 0.8;
+  margin-right: 12px;
+  margin-bottom: -4px;
+  color: #ffffff;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* --- BLOCK 6: FOREST NIGHT --- 
+   Shifts RIGHT (28% indent) to leave a massive left gutter for the Birds on a Branch art */
+.forest-night {
+  width: 66%;
+  margin-left: 28%;
+  text-align: left;
+}
+
+/* --- BLOCK 7: FOREST POOL --- 
+   Returns to the left, slightly wider measure for extended narrative prose */
+.forest-pool {
+  width: 74%;
+  margin-left: 6%;
+  text-align: left;
+}
+
+/* --- BLOCK 8: SEA SHORE (CLOUD DIVIDER) --- 
+   Wide, prominent center alignment to act as a major structural break in the story */
+.sea-shore {
+  width: 86%;
+  max-width: 1050px;
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
+}
 
-}.hero{
+.sea-shore p {
+  text-align: center;
+  text-indent: 0;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 900px;
+}
+
+/* --- BLOCK 9: SWAN REUNION --- 
+   Right-shifted (22% indent), leaving the left margin open for the falling feather */
+.swan-reunion {
+  width: 70%;
+  margin-left: 24%;
+  text-align: left;
+}
+
+/* --- BLOCK 10: WEAVING THE NET --- 
+   Left-shifted (5% indent), leaving a wide right gutter for the first Swan Artwork */
+.weaving-net {
+  width: 68%;
+  margin-left: 5%;
+  text-align: left;
+}
+
+/* --- BLOCK 11: FLIGHT & THE STORM --- 
+   Right-shifted (26% indent) to clear the second Swan Artwork on the left */
+.flight-storm {
+  width: 68%;
+  margin-left: 26%;
+  text-align: left;
+}
+
+/* --- BLOCK 12: THE FAIRY'S TASK --- 
+   Left-leaning, indented 10% from the margin */
+.fairy-task {
+  width: 65%;
+  margin-left: 10%;
+  text-align: left;
+}
+
+/* --- BLOCK 13: THE KING'S CASTLE --- 
+   Centered narrative bridge */
+.king-castle {
+  width: 76%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+/* --- BLOCK 14: THE CHURCHYARD RUN --- 
+   Right-shifted (25% indent) to balance against the Merian Nature art on the left */
+.churchyard-run {
+  width: 68%;
+  margin-left: 25%;
+  text-align: left;
+}
+
+/* --- BLOCK 15: THE ARCHBISHOP'S SUSPICION --- 
+   Left-shifted (6% indent), leaving the right margin open for the butterfly */
+.archbishop-suspicion {
+  width: 68%;
+  margin-left: 6%;
+  text-align: left;
+}
+
+/* --- BLOCK 16: CONDEMNED TO FIRE --- 
+   Right-shifted (20% indent) for the penultimate tension building */
+.condemned-cell {
+  width: 72%;
+  margin-left: 22%;
+  text-align: left;
+}
+
+/* --- BLOCK 17: THE ENDING CLIMAX --- 
+   Grand, symmetrical center alignment spanning almost the full width of the spine */
+.ending-climax {
+  width: 88%;
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+section{
+    position: relative;
+    width: 100%;
+    margin-bottom: 180px;
+}
+
+article{
+    width: 100%;
+    position: relative;
+}
+
+hero{
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     padding-top: 80px;
     margin-bottom: 40px;
 }
 
 
-h1{
-    font-family: "Playfair Display", serif;
-    font-size: 108pt;
-    font-weight: 900;
-    color: #100e0e;
-
-    text-align: center;
-    text-transform: uppercase;
-
-    line-height: 1;
-    letter-spacing: -2px;
-
-    margin: 0;
-    white-space: nowrap;
-}
-
-h3{
-    font-family: "Playfair Display", serif;
-    font-size: 54pt;
-    font-weight: 400;
-    color: #0b0909;
-
-    text-align: center;
-
-    line-height: 3;
-    letter-spacing: 0.5px;
-
-    margin: 8px 0 80px;
-}
-
-
-h2 {
-  font-size: 27pt;
-  font-style: regular;
-  margin-top: 2em;
-  margin-bottom: 1em;
-}
-
-p {
-  font-size: 18pt;
-  margin-bottom: 1.2em;
-  text-align: left;
-  text-indent: 1.5em;
-}
-
-.subtitle {
-  text-align: center;
-  font-style: italic;
-  margin-bottom: 2em;
-  text-indent: 0;
-}
-
-.conclusion {
-  text-indent: 1.5em;
-  font-weight: 500;
-}
-
-a {
-  color: #8B4513;
-  text-decoration: underline;
-}
-
-a:hover {
-  color: #5D2E0A;
-}
-
-/* Lists */
-ul,
-ol {
-  margin-bottom: 1.5em;
-  padding-left: 2rem;
-}
-
-li {
-  margin-bottom: 0.5em;
-  text-align: left;
-}
 
 /* Images */
 img {
@@ -154,13 +435,53 @@ img {
   height: auto;
   display: block;
 }
-
-/* Utility Classes */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
+.toad-bath .snake {
+  position: absolute;
+  left: calc(100% + 20px); /* Foolproof: Anchors 20px outside the right text boundary */
+  right: auto;             /* CRITICAL: Clears any old rules causing text overlap */
+  top: -30px;              /* Pulls the snake up higher to flank the bold text */
+  width: clamp(160px, 18vw, 220px);
+  height: auto;
+  pointer-events: none;
+  z-index: 2;
+  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.25));
 }
+
+/* 2. Keep typography clean, straight, and unindented */
+.forest-night p {
+  text-align: left;
+  text-indent: 0;
+  margin-bottom: 1.6em;
+}
+
+/* 3. Position the Bamboo & Birds in the wide left-hand gutter */
+.forest-night .birds-on-a-branch {
+  position: absolute;
+  
+  /* Mirroring our snake trick: pushes the image outside the LEFT edge of the text box */
+  right: 106%;
+  
+  /* Aligns the top leaves with the first line of "She had been in the wood..." */
+  top: -15px;
+  
+  /* Matches the prominent, sprawling scale seen in the mockup */
+  width: clamp(200px, 22vw, 300px);
+  height: auto;
+  
+  pointer-events: none;
+  z-index: 2;
+  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.25));
+}
+
+  .story-block.forest-night {
+    width: 65%;
+    margin-left: 25%; /* Pulls the block slightly left on smaller screens */
+  }
+  
+  .forest-night .birds-on-a-branch {
+    right: 96%; /* Pulls the branch closer to the text so it doesn't get cut off */
+    width: clamp(160px, 24vw, 220px);
+  }
 
 header {
   text-align: center;
@@ -173,14 +494,13 @@ footer {
   margin-top: 3em;
   padding-top: 2em;
   border-top: 1px solid #ddd;
+  display:flex;
+   flex-direction: column;
+    align-items: center;
+    justify-content: center;
   text-align: center;
-  font-size: 0.9em;
-  color: #666;
-}
-
-cite {
-  font-style: normal;
-  line-height: 1.4;
+  font-size: 1.5em;
+  color: #ffffff;
 }
 
 .img-right {
