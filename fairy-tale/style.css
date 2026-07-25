@@ -9,18 +9,39 @@ html {
   scroll-behavior: smooth;
 }
 
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('https://fonts.gstatic.com/s/playfairdisplay/v37/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKeiunDXbtM.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+ 
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap');
+
+
 body {
-  font-family: 'Georgia Pro', Georgia, serif;
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: #2c2c2c;
-  margin: 0;
-  padding: 2rem;
-  background-color: #fefefe;
-  max-width: 850px;
-  margin: 0 auto;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  font-family: 'EB Garamond';font-size:
+  font-size: 18pt;
+  line-height: 1.8;
+  color: white;
+  margin: 0; 
+
+  background: linear-gradient(
+        to bottom,
+        #4E8EEA,
+        #76A8F5,
+        #A6C8FF
+    );
+
+    overflow-x: hidden;
+}
+
+main{
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    position: relative;
 }
 
 /* Typography */
@@ -36,25 +57,61 @@ h6 {
   line-height: 1.3;
   color: #1a1a1a;
   text-align: center;
+
+}.hero{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding-top: 80px;
+    margin-bottom: 40px;
 }
 
-h1 {
-  font-size: 2.2rem;
-  margin-bottom: 0.3em;
-  border-bottom: 2px solid #333;
-  padding-bottom: 0.5em;
+
+h1{
+    font-family: "Playfair Display", serif;
+    font-size: 108pt;
+    font-weight: 900;
+    color: #100e0e;
+
+    text-align: center;
+    text-transform: uppercase;
+
+    line-height: 1;
+    letter-spacing: -2px;
+
+    margin: 0;
+    white-space: nowrap;
 }
+
+h3{
+    font-family: "Playfair Display", serif;
+    font-size: 54pt;
+    font-weight: 400;
+    color: #0b0909;
+
+    text-align: center;
+
+    line-height: 3;
+    letter-spacing: 0.5px;
+
+    margin: 8px 0 80px;
+}
+
 
 h2 {
-  font-size: 1.3rem;
-  font-style: italic;
+  font-size: 27pt;
+  font-style: regular;
   margin-top: 2em;
   margin-bottom: 1em;
 }
 
 p {
+  font-size: 18pt;
   margin-bottom: 1.2em;
-  text-align: justify;
+  text-align: left;
   text-indent: 1.5em;
 }
 
@@ -89,18 +146,6 @@ ol {
 li {
   margin-bottom: 0.5em;
   text-align: left;
-}
-
-blockquote {
-  margin: 2em 0;
-  padding: 1em 2em;
-  border-left: 4px solid #ccc;
-  font-style: italic;
-  background-color: #f9f9f9;
-}
-
-blockquote p {
-  text-indent: 0;
 }
 
 /* Images */
