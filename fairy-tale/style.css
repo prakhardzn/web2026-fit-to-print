@@ -541,16 +541,10 @@ img {
 }
 .royal-childhood .crown {
   position: absolute;
-  
   left: 98%;
-  
-  
-  top: 18%;
-  
- 
-  width: clamp(360px, 150vw, 290px);
+  top: -38%;
+  width: clamp(870px, 150vw, 290px);
   height: auto;
-  
   pointer-events: none;
   z-index: 2;
   filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.22));
@@ -560,7 +554,7 @@ img {
   position: absolute;
   left: calc(100% + 80px); 
   right: auto;             
-  top: -200px;             
+  top: -180px;             
   width: clamp(600px, 92vw, 220px);
   height: auto;
   pointer-events: none;
@@ -819,10 +813,11 @@ footer {
   font-size: 1.5em;
   color: #ffffff;
 }
+
  .feather-bottom {
   display: block;
   margin: 0 auto 30px;   /
-  width: clamp(50px, 6vw, 80px);
+  width: clamp(50px, vw, 80px);
   height: auto;
   transform: rotate(12deg);
   pointer-events: none;
@@ -842,36 +837,69 @@ footer {
               transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.story-block p,
+.story-block h3 {
+  opacity: 0;
+  transform: translateY(40px);
+  filter: blur(4px);
+  transition: opacity 1.1s cubic-bezier(0.19, 1, 0.22, 1),
+              transform 1.1s cubic-bezier(0.19, 1, 0.22, 1),
+              filter 1.1s cubic-bezier(0.19, 1, 0.22, 1);
+  will-change: opacity, transform, filter;
+}
 
 .story-block .merian-nature,
 .story-block .butterfly,
+.story-block .falling-feather[style*="right"],
+.story-block img[src*="merian"],
+.story-block img[src*="butterfly"] {
+  opacity: 0;
+  transform: translateX(80px) translateY(20px) rotate(12deg) scale(0.92);
+  transition: opacity 1.4s cubic-bezier(0.19, 1, 0.22, 1),
+              transform 1.4s cubic-bezier(0.19, 1, 0.22, 1);
+  will-change: opacity, transform;
+}
+
+
 .story-block .falling-feather,
 .story-block .elina-with-swans,
-.story-block img[class*="illus"]:not(.cloud):not(.long-cloud) {
+.story-block img[src*="feather"]:not(footer img),
+.story-block img[src*="swan"]:not(.cloud-divider) {
   opacity: 0;
-  transform: scale(0.94);
-  transition: opacity 1s ease-out, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateX(-80px) translateY(20px) rotate(-12deg) scale(0.92);
+  transition: opacity 1.4s cubic-bezier(0.19, 1, 0.22, 1),
+ transform 1.4s cubic-bezier(0.19, 1, 0.22, 1);
+  will-change: opacity, transform;
 }
+
+
+
 
 .story-block.is-revealed p,
 .story-block.is-revealed h3 {
   opacity: 1;
   transform: translateY(0px);
+  filter: blur(0px);
 }
 
-.story-block.is-revealed p:nth-of-type(2) { transition-delay: 0.15s; }
-.story-block.is-revealed p:nth-of-type(3) { transition-delay: 0.30s; }
-.story-block.is-revealed p:nth-of-type(4) { transition-delay: 0.45s; }
-
+.story-block.is-revealed p:nth-of-type(1) { transition-delay: 0.10s; }
+.story-block.is-revealed p:nth-of-type(2) { transition-delay: 0.25s; }
+.story-block.is-revealed p:nth-of-type(3) { transition-delay: 0.40s; }
+.story-block.is-revealed p:nth-of-type(4) { transition-delay: 0.55s; }
 
 .story-block.is-revealed .merian-nature,
 .story-block.is-revealed .butterfly,
 .story-block.is-revealed .falling-feather,
 .story-block.is-revealed .elina-with-swans,
-.story-block.is-revealed img[class*="illus"]:not(.cloud):not(.long-cloud) {
+.story-block.is-revealed img[src*="merian"],
+.story-block.is-revealed img[src*="butterfly"],
+.story-block.is-revealed img[src*="feather"]:not(footer img),
+.story-block.is-revealed img[src*="swan"]:not(.cloud-divider) {
   opacity: 1;
-  transform: scale(1);
+  transform: translateX(0px) translateY(0px) rotate(0deg) scale(1);
+  transition-delay: 0.2s;
 }
+
 
 @keyframes cloudPanAcross {
   0% {
@@ -955,4 +983,47 @@ footer .feather-bottom {
 .ending-climax .elina-with-swans,
 .story-block img[src*="swan"]:not(.cloud-divider) {
   animation: swanFlight 9s ease-in-out infinite;
+}
+story-block .crown,
+.story-block img[src*="crown"] {
+  cursor: pointer;
+  transition: filter 0.4s ease, transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.story-block.is-revealed .crown,
+.story-block.is-revealed img[src*="crown"] {
+  animation: automaticGlint 4s ease-in-out infinite;
+}
+
+@keyframes automaticGlint {
+  0%, 82%, 100% {
+    filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.18)) brightness(1);
+    transform:scale(1);
+  }
+  91% {
+    filter: drop-shadow(0 0 18px rgba(255, 215, 0, 0.85)) 
+       drop-shadow(0 0 8px rgba(255, 255, 255, 0.95)) 
+       brightness(1.22) contrast(1.08);
+    transform: scale(1.03); /* Soft upward reach toward the light */
+  }
+}
+
+
+.story-block .crown.crown-clicked,
+.story-block img[src*="crown"].crown-clicked {
+  
+  animation: clickFlare 1.7s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@keyframes clickFlare {
+  0% {
+    filter: drop-shadow(0 0 40px rgba(255, 215, 0, 1)) 
+            drop-shadow(0 0 20px rgba(255, 255, 255, 1)) 
+            brightness(1.45) contrast(1.15);
+    transform: scale(1.12) rotate(0deg);
+  }
+  100% {
+    filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.18)) brightness(1);
+    transform: scale(1) rotate(-6deg);
+  }
 }

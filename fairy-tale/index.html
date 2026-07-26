@@ -158,44 +158,61 @@
       <p>"Yes, she is innocent," said the eldest brother, and related all that had taken place. While he spoke, there rose in the air a fragrance as from millions of roses. Every piece of fagot in the pile made to burn her had taken root, and threw out branches until the whole appeared like a thick hedge, large and high, covered with roses; while above all bloomed a white, shining flower that glittered like a star. This flower the king plucked, and when he placed it in Eliza's bosom she awoke from her swoon with peace and happiness in her heart. Then all the church bells rang of themselves, and the birds came in great flocks. And a marriage procession, such as no king had ever before seen, returned to the castle.</p>
           </article>
     </main>
-<script>
+   <footer>
+      <p>"From Fairy Tales of"Hans Christian Andersen(1805-1875)"</p>
+    </footer>
+    <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const observer = new IntersectionObserver((entries) => {
+    
+    const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add("is-revealed");
-          // Stops observing once revealed so it doesn't re-animate when scrolling upward
-          observer.unobserve(entry.target);
+          revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15 }); // Fires when 15% of the section is visible
+    }, { threshold: 0.12 });
 
-    // Target all story blocks and the footer
     document.querySelectorAll(".story-block, footer").forEach(block => {
-      observer.observe(block);
+      revealObserver.observe(block);
+    });
+
+    let windowHeight = window.innerHeight;
+    const parallaxElements = document.querySelectorAll('.merian-nature, .butterfly, .falling-feather, .elina-with-swans');
+    
+    window.addEventListener('resize', () => { windowHeight = window.innerHeight; });
+
+    function applyParallax() {
+      const scrollY = window.scrollY;
+      
+      parallaxElements.forEach(el => {
+        if (el.closest('.story-block').classList.contains('is-revealed')) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= windowHeight && rect.bottom >= 0) {
+            const distanceFromCenter = (rect.top + rect.height / 2) - (windowHeight / 2);
+            const parallaxOffset = distanceFromCenter * -0.12; 
+            el.style.transform = `translate3d(0px, ${parallaxOffset.toFixed(2)}px, 0px)`;
+          }
+        }
+      });
+      
+      requestAnimationFrame(applyParallax);
+    }
+
+    requestAnimationFrame(applyParallax);
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const crowns = document.querySelectorAll('.story-block .crown, .story-block img[src*="crown"]');
+    crowns.forEach(crown => {
+      crown.addEventListener('click', () => {
+        crown.classList.remove('crown-clicked');
+        void crown.offsetWidth; 
+        crown.classList.add('crown-clicked');
+      });
     });
   });
 </script>
-    <footer>
-      <p>"From Fairy Tales of"<br>Hans Christian Andersen<br>(1805-1875)</p>
-    </footer>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-revealed");
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.15 });
-
-        document.querySelectorAll(".story-block, footer").forEach(block => {
-          observer.observe(block);
-        });
-      });
-    </script>
-    
   </body>
 </html>
